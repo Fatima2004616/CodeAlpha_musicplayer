@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10091d">
+  <title>VELORA — Music Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a href="#" class="brand"><span class="brand-icon">♫</span> VELORA<span class="brand-dot">.</span></a>
+
+      <p class="side-label">MENU</p>
+      <button class="nav-item active" data-view="home"><span>⌂</span> Discover</button>
+      <button class="nav-item" data-view="library"><span>▤</span> Your Library</button>
+      <button class="nav-item" data-view="favorites"><span>♡</span> Favorites</button>
+
+      <p class="side-label playlist-heading">YOUR PLAYLISTS</p>
+      <button class="nav-item" data-view="chill"><span class="playlist-dot purple"></span> Midnight Chill</button>
+      <button class="nav-item" data-view="focus"><span class="playlist-dot pink"></span> Deep Focus</button>
+      <button class="nav-item" data-view="energy"><span class="playlist-dot blue"></span> Good Energy</button>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-icon">✦</div>
+        <h3>Your sound, your world.</h3>
+        <p>A little music can change everything.</p>
+        <button id="exploreBtn" class="small-button">Explore music ↗</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">Your space <span>/</span> <strong id="viewName">Discover</strong></div>
+        <div class="top-actions">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Search songs..." aria-label="Search songs">
+            <kbd>/</kbd>
+          </label>
+          <div class="avatar">V</div>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL MUSIC SPACE</p>
+          <h1>Feel every <span>beat.</span></h1>
+          <p class="subheading">Find your rhythm. Stay in your world.</p>
+        </div>
+        <div class="date-chip">✧ MUSIC FOR THE MOMENT</div>
+      </section>
+
+      <section class="hero-card">
+        <div class="hero-art">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+          <div class="hero-record"><span>V</span></div>
+          <div class="equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="art-caption">SOUND / EMOTION / YOU</span>
+        </div>
+        <div class="hero-copy">
+          <span class="pill">✦ EDITOR'S PICK</span>
+          <p class="hero-kicker">YOUR DAILY ESCAPE</p>
+          <h2>Somewhere<br>between <em>beats.</em></h2>
+          <p class="hero-description">Put the world on pause. Let the music say what words cannot.</p>
+          <button class="primary-button" id="heroPlay">▶ &nbsp; Play a track</button>
+          <span class="hero-note">A new mood is just one play away.</span>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div><p class="eyebrow">MADE FOR YOUR MOOD</p><h2>Explore vibes</h2></div>
+          <span class="section-count">03 COLLECTIONS</span>
+        </div>
+        <div class="mood-grid">
+          <button class="mood-card mood-chill" data-mood="chill">
+            <span class="mood-symbol">☾</span><span class="mood-name">Midnight Chill</span><span class="mood-caption">Slow down & breathe ↗</span>
+          </button>
+          <button class="mood-card mood-focus" data-mood="focus">
+            <span class="mood-symbol">✧</span><span class="mood-name">Deep Focus</span><span class="mood-caption">Find your flow ↗</span>
+          </button>
+          <button class="mood-card mood-energy" data-mood="energy">
+            <span class="mood-symbol">ϟ</span><span class="mood-name">Good Energy</span><span class="mood-caption">Feel alive again ↗</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-block tracks-section" id="tracksSection">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE SOUNDTRACK</p><h2 id="tracksTitle">Trending tracks <span class="heading-spark">✦</span></h2></div>
+          <span class="section-count" id="trackCount">06 TRACKS</span>
+        </div>
+        <div class="track-table">
+          <div class="track-table-head"><span>#</span><span>TRACK</span><span>MOOD</span><span>TIME</span><span>♡</span></div>
+          <div id="trackList"></div>
+          <p class="empty-state" id="emptyState" hidden>No tracks found. Try another search.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <a href="#" class="footer-brand">VELORA<span>.</span></a>
+        <p>Made for the moments words can't explain.</p>
+        <span>© 2026 VELORA STUDIO</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="player-bar">
+    <div class="now-playing">
+      <div class="mini-art" id="miniArt">♫</div>
+      <div class="now-text"><strong id="currentTitle">Choose your mood</strong><span id="currentArtist">Your next favorite track awaits</span></div>
+      <button id="likeCurrent" class="heart-button" aria-label="Add current track to favorites">♡</button>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button id="shuffleBtn" class="sub-control" aria-label="Shuffle">⤨</button>
+        <button id="prevBtn" class="control-button" aria-label="Previous track">|◀</button>
+        <button id="playBtn" class="play-button" aria-label="Play">▶</button>
+        <button id="nextBtn" class="control-button" aria-label="Next track">▶|</button>
+        <button id="repeatBtn" class="sub-control" aria-label="Repeat">↻</button>
+      </div>
+      <div class="timeline">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progress" min="0" max="100" value="0" aria-label="Track progress">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="player-right">
+      <span class="volume-icon">♫</span>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
